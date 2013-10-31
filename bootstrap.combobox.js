@@ -47,6 +47,17 @@
             return false
         };
 
+        var select = function(g, v) {
+            var id = g.attr("id"), b = $(".btn", g),
+            a = $("li a[href='"+v+"']", g);
+            
+            if (a.length == 0) return false;
+            
+            selectValue(id, g, b, a)
+
+            return true;
+        };
+
         if (arg && arg['action'] == "select") {
             var v = arg['value'];
 
@@ -54,14 +65,7 @@
 
             var cb = $(this);
 
-            cb.each(function(i,e) {
-                var g = $(e), id = g.attr("id"), b = $(".btn", g),
-                a = $("li a[href='"+v+"']", g);
-
-                if (a.length == 0) return;
-
-                selectValue(id, g, b, a)
-            });
+            cb.each(function(i,e) { select($(e), v) });
 
             return cb;
         } // end of select
@@ -155,7 +159,7 @@
 
         // Setup
         $(this).each(function(i,e) {
-            var s = $(e), id = s.attr("id"),
+            var s = $(e), id = s.attr("id"), v = s.val(),
             bc = s.attr("data-btn-class"), 
             xbc = (bc && bc != "") ? ' '+bc : "",
             b = $('<button type="button" class="btn'+xbc+' dropdown-toggle" data-toggle="dropdown"><span class="label"></span><span class="caret"></span></button>').attr("name", s.attr("name")).attr("id", id+"-tog"), lb= $(".label", b),
@@ -170,9 +174,13 @@
               '" id="' +id+ '-hid" value="" />').insertAfter(s);
 
             var sc = s.attr("class"), xc = (sc && sc != "") ? ' '+sc : "", 
-            g = $('<div class="btn-group '+xc+'"></div>').attr("id", id).append(b).append(l), so = selectedOption(g);
+            g = $('<div class="btn-group '+xc+'"></div>').
+                attr("id", id).append(b).append(l);
 
-            selectValue(id, g, b, so[2]);
+            if (!select(g, v)) {
+                var so = selectedOption(g);
+                selectValue(id, g, b, so[2])
+            }
 
             $("li > a", g).click(function() { 
                 var a = $(this), ret = selectValue(id, g, b, a);

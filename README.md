@@ -43,6 +43,16 @@ Returns value of selected option.
 var v = $('.btn-group').btComboBox('value')
 ```
 
+#### select
+
+`.btComboBox({'action':"select",'value':"V"})`
+
+Selects option matching given value (if one).
+
+```javascript
+$('.btn-group).btComboBox({'action':"select",'value':"value_to_select"})
+```
+
 #### clear
 
 `.btComboBox('clear')`
