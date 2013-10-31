@@ -129,7 +129,9 @@
         // Setup
         $(this).each(function(i,e) {
             var s = $(e), id = s.attr("id"),
-            b = $('<button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><span class="label"></span><span class="caret"></span></button>').attr("name", s.attr("name")).attr("id", id+"-tog"), lb= $(".label", b),
+            bc = s.attr("data-btn-class"), 
+            xbc = (bc && bc != "") ? ' '+bc : "",
+            b = $('<button type="button" class="btn'+xbc+' dropdown-toggle" data-toggle="dropdown"><span class="label"></span><span class="caret"></span></button>').attr("name", s.attr("name")).attr("id", id+"-tog"), lb= $(".label", b),
             l = $('<ul class="dropdown-menu" role="menu"></ul>');
 
             $("option", s).each(function(j,f) {
@@ -140,7 +142,8 @@
             $('<input type="hidden" name="' +s.attr("name")+ 
               '" id="' +id+ '-hid" value="" />').insertAfter(s);
 
-            var g = $('<div class="btn-group ugc-form-control ugc-combobox"></div>').attr("id", id).append(b).append(l), so = selectedOption(g);
+            var sc = s.attr("class"), xc = (sc && sc != "") ? ' '+sc : "", 
+            g = $('<div class="btn-group '+xc+'"></div>').attr("id", id).append(b).append(l), so = selectedOption(g);
 
             selectValue(id, g, b, so[2]);
 
