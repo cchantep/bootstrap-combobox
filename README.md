@@ -4,6 +4,8 @@ Supports combobox as a Twitter Bootstrap component,
 based on [dropdown](http://getbootstrap.com/components/#dropdowns) 
 (which is compatible down to IE7).
 
+See [demo](http://rawgithub.com/applicius/bootstrap-combobox/master/demo.html).
+
 ## JavaScript usage
 
 Combobox plugin can be applied on `select` elements, to turn them into comboboxes.
