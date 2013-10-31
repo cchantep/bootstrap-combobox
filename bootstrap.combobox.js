@@ -5,7 +5,7 @@
         if (arg == "values") {
             var vs = [];
 
-            $("li a", $(this)).each(function(i,v) { vs.push(v) });
+            $("li a", $(this)).each(function(i,v) { vs.push(v.attr("href")) });
 
             return vs
         } // end of values
