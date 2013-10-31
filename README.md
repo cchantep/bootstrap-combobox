@@ -1,14 +1,19 @@
 # Bootstrap Combobox plugin
 
 Supports combobox as a Twitter Bootstrap component, 
-based on [dropdown](http://getbootstrap.com/components/#dropdowns).
+based on [dropdown](http://getbootstrap.com/components/#dropdowns) 
+(which is compatible down to IE7).
 
 ## JavaScript usage
 
 Combobox plugin can be applied on `select` elements, to turn them into comboboxes.
 
 ```html
-<select id="uniqueId" name="fieldName"><!-- ... --></select>
+<select id="uniqueId" name="fieldName"
+  class="optional overall classes"
+  data-btn-class="option toggle classes">
+  <!-- ... -->
+</select>
 ```
 
 ```javascript
@@ -26,6 +31,16 @@ Returns selected option (`[val, label, element]`) or `null` (if none).
 ```javascript
 var o = $('.btn-group').btComboBox('selectedOption');
 var val = o[0], label = o[1], elem = o[2];
+```
+
+#### value
+
+`.btComboBox('value')`
+
+Returns value of selected option.
+
+```javascript
+var v = $('.btn-group').btComboBox('value')
 ```
 
 #### clear

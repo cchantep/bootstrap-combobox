@@ -20,6 +20,15 @@
             return selectedOption($(this))
         }
 
+        var value = function(e) {
+            var o = selectedOption(e);
+            return (o) ? o[0] : null
+        };
+            
+        if (arg == "value") {
+            return value($(this))
+        }
+
         var removeAll = function(e) { 
             $("li", e).remove();
             return e
@@ -38,13 +47,32 @@
             return false
         };
 
+        if (arg && arg['action'] == "select") {
+            var v = arg['value'];
+
+            if (!v) return;
+
+            var cb = $(this);
+
+            cb.each(function(i,e) {
+                var g = $(e), id = g.attr("id"), b = $(".btn", g),
+                a = $("li a[href='"+v+"']", g);
+
+                if (a.length == 0) return;
+
+                selectValue(id, g, b, a)
+            });
+
+            return cb;
+        } // end of select
+
         if (arg == "clear") {
             return $(this).each(function(i,e) { 
                 var g = $(e), id = g.attr("id"), b = $(".btn", g);
                 removeAll(g);
                 selectValue(id, g, b, null)
             })
-        };
+        } // end of clear
 
         // ---
         
@@ -111,8 +139,7 @@
             var pairs = options(arg['pairs'], arg['extractor']);
 
             cb.each(function(i,c) { 
-                var g = $(c), id = g.attr("id"), b = $(".btn", g),
-                v = selectedOption(g)[0];
+                var g = $(c), id = g.attr("id"), b = $(".btn", g), v = value(g);
 
                 removeAll(g);
                 load(g, pairs);
