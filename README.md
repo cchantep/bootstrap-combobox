@@ -95,3 +95,13 @@ $('.btn-group').btComboBox({
 
 Reset options, using same `parameters` as load method.
 Keep value selection (if value is still available in new options).
+
+#### values
+
+`.btComboBox('values')`
+
+Returns values from all available options.
+
+```javascript
+var vs = $('.btn-group').btComboBox('values')
+```

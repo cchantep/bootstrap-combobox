@@ -2,6 +2,16 @@
     "use strict";
 
     $.fn.btComboBox = function(arg) {
+        if (arg == "values") {
+            var vs = [];
+
+            $("li a", $(this)).each(function(i,v) { vs.push(v) });
+
+            return vs
+        } // end of values
+
+        //  ---
+
         var selectedOption = function(g) {
             var o = $(".active a", g);
 
