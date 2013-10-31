@@ -5,8 +5,14 @@ based on [dropdown](http://getbootstrap.com/components/#dropdowns).
 
 ## JavaScript usage
 
+Combobox plugin can be applied on `select` elements, to turn them into comboboxes.
+
+```html
+<select id="uniqueId" name="fieldName"><!-- ... --></select>
+```
+
 ```javascript
-$('.btn-group').btComboBox()
+$('select').btComboBox()
 ```
 
 ### Methods
