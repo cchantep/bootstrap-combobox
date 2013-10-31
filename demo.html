@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ComboDemo</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" rel="stylesheet" />
+
+    <style type="text/css">
+#combo-group { height: 2.5em }
+p .btn { width: 35% }
+    </style>
+  </head>
+  <body>
+    <div class="pageheader">
+      <h1>Combobox <small>demo</small></h1>
+    </div>
+
+    <div class="container">
+      <form name="test" action="#">
+        <div class="form-group" id="combo-group">
+          <label for="combo">Initial select</label>
+          <select id="combo" name="fruit" 
+                  class="my-combo" data-btn-class="btn-success">
+            <option value="A">Apple</option>
+            <option value="B">Blueberry</option>
+            <option value="O">Orange</option>
+          </select>
+        </div>
+
+        <h2>Test it!</h2>
+
+        <p>
+          <button class="btn btn-primary" id="setup">Set it as a combobox</button> 
+        </p>
+
+        <p>
+          <button class="btn btn-default" id="selectedOption" 
+                  disabled="disabled">
+            Get selected option
+          </button>
+        </p>
+
+        <p>
+          <button class="btn btn-default" id="val" 
+                  disabled="disabled">
+            Get value
+          </button>
+        </p>
+
+        <p>
+          <button class="btn btn-default" id="values" 
+                  disabled="disabled">
+            Available values
+          </button>
+        </p>
+
+        <p>
+          <button class="btn btn-default" id="select" 
+                  disabled="disabled">
+            Select ...
+          </button>
+        </p>
+
+        <p>
+          <button class="btn btn-default" id="clear" 
+                  disabled="disabled">
+            Clear
+          </button>
+        </p>
+      </form>
+    </div>
+
+    <script src="//codeorigin.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
+    <script src="//rawgithub.com/applicius/bootstrap-combobox/master/bootstrap.combobox.js"></script>
+    <script type="text/javascript">
+$(function() {
+  $("#setup").click(function() {
+    $("#combo").btComboBox();
+    $(this).removeClass("btn-primary").addClass("btn-default").
+      attr("disabled", "disabled");
+    $("#selectedOption, #val, #values, #select, #clear").removeAttr("disabled");
+    return false
+  });
+
+  $("#selectedOption").click(function() {
+    alert("Selected option is: " + $("#combo").btComboBox('selectedOption'));
+    return false
+  });
+
+  $("#val").click(function() {
+    alert("Value (of selected option) is: " + 
+      $("#combo").btComboBox('value'));
+    return false
+  });
+  
+  $("#values").click(function() {
+    alert("Values from available options are: " + 
+      $("#combo").btComboBox('values'));
+    return false
+  });
+
+  $("#select").click(function() {
+    var c = $("#combo"), vs = c.btComboBox('values');
+    var v = prompt("Type value to be selected (among " + vs + ")", vs[0]);
+    c.btComboBox({'action':"select",'value':v});
+    return false
+  });
+
+  $("#clear").click(function() {
+    $("#combo").btComboBox('clear');
+    return false
+  });
+});
+    </script>
+  </body>
+</html>
