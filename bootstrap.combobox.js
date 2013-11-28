@@ -169,7 +169,11 @@
 
         // Setup
         $(this).each(function(i,e) {
-            var s = $(e), id = s.attr("id"), v = s.val(),
+            var s = $(e);
+            
+            if (s.hasClass("btn-group")) return; // Already enhanced
+
+            var id = s.attr("id"), v = s.val(),
             bc = s.attr("data-btn-class"), 
             xbc = (bc && bc != "") ? ' '+bc : "",
             b = $('<button type="button" class="btn'+xbc+' dropdown-toggle" data-toggle="dropdown"><span class="label"></span><span class="caret"></span></button>').attr("name", s.attr("name")).attr("id", id+"-tog"), lb= $(".label", b),
