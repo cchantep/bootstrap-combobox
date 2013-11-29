@@ -202,7 +202,11 @@
                 return ret
             });
             
-            b.click(function() { $("ul", g).width(g.width()) });
+            b.click(function() { 
+                var w = g.width();
+
+                $("ul", g).css({'min-width':w}).width(w)
+            });
 
             s.replaceWith(g)
         })
