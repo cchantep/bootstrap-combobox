@@ -107,3 +107,13 @@ Returns values from all available options.
 ```javascript
 var vs = $('.btn-group').btComboBox('values')
 ```
+
+### Events
+
+`change`
+
+Fired when combobox value is changed.
+
+```javascript
+$("#combobox").on('change', function() { /* ... */ })
+```

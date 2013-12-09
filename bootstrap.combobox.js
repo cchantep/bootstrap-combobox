@@ -45,14 +45,19 @@
         };
         var selectValue = function(id, g, b, a) {
             var v = (a) ? a.attr("href") : null, 
-            l = (a) ? a.text() : "";
+            l = (a) ? a.text() : "",
+            h = $("#"+id+"-hid"), o = h.val();
 
-            $("#"+id+"-hid").val(v);
+            if (v == o) return false; // No change
+
+            h.val(v);
             $(".label", b).text(l);
 
             $(".active", g).removeClass("active");
 
             if (a) a.parent().addClass("active");
+
+            $("#"+id).trigger('change');
 
             return false
         };
@@ -168,6 +173,7 @@
         // ---
 
         // Setup
+        var sel = "";
         $(this).each(function(i,e) {
             var s = $(e);
             
@@ -181,7 +187,7 @@
 
             $("option", s).each(function(j,f) {
                 var o = $(f);
-                $('<li><a href="' +o.val()+ '">' +o.text()+ '</a></li>').appendTo(l)
+                $('<li><a href="'+o.val()+'">'+o.text()+'</a></li>').appendTo(l)
             });
 
             $('<input type="hidden" name="' +s.attr("name")+ 
@@ -208,7 +214,12 @@
                 $("ul", g).css({'min-width':w}).width(w)
             });
 
-            s.replaceWith(g)
-        })
+            s.replaceWith(g);
+
+            if (sel == "") sel = "#" + id;
+            else sel += ",#" + id;
+        });
+
+        return $(sel)
     };
 })(jQuery);

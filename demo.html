@@ -8,6 +8,8 @@
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" rel="stylesheet" />
 
     <style type="text/css">
+.debug > .selected { color: #4cae4c }
+#combo-tog { min-width: 100px }
 #combo-group { height: 2.5em }
 p .btn { width: 35% }
     </style>
@@ -28,6 +30,7 @@ p .btn { width: 35% }
             <option value="O">Orange</option>
           </select>
         </div>
+        <p class="debug">Selected value (<tt>change</tt> event): <strong class="selected">-</strong></p>
 
         <h2>Test it!</h2>
 
@@ -78,7 +81,10 @@ p .btn { width: 35% }
     <script type="text/javascript">
 $(function() {
   $("#setup").click(function() {
-    $("#combo").btComboBox();
+    var x = $("#combo").btComboBox().on('change', function() {
+      $(".debug > .selected").text($(this).btComboBox('value'))
+    });
+
     $(this).removeClass("btn-primary").addClass("btn-default").
       attr("disabled", "disabled");
     $("#selectedOption, #val, #values, #select, #clear").removeAttr("disabled");
