@@ -72,6 +72,20 @@ p .btn { width: 35% }
             Clear
           </button>
         </p>
+
+        <p>
+          <button class="btn btn-default" id="disable" 
+                  disabled="disabled">
+            Disable
+          </button>
+        </p>
+
+        <p>
+          <button class="btn btn-default" id="enable" 
+                  disabled="disabled">
+            Enable
+          </button>
+        </p>
       </form>
     </div>
 
@@ -87,7 +101,9 @@ $(function() {
 
     $(this).removeClass("btn-primary").addClass("btn-default").
       attr("disabled", "disabled");
-    $("#selectedOption, #val, #values, #select, #clear").removeAttr("disabled");
+    $("#selectedOption, #val, #values, #select, #clear, #disable, #enable").
+      removeAttr("disabled");
+
     return false
   });
 
@@ -117,6 +133,16 @@ $(function() {
 
   $("#clear").click(function() {
     $("#combo").btComboBox('clear');
+    return false
+  });
+
+  $("#disable").click(function() {
+    $("#combo").btComboBox('disable');
+    return false
+  });
+
+  $("#enable").click(function() {
+    $("#combo").btComboBox('enable');
     return false
   });
 });

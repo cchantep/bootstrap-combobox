@@ -2,6 +2,38 @@
     "use strict";
 
     $.fn.btComboBox = function(arg) {
+        if (arg == "disable") {
+            var cb = $(this);
+
+            if (cb.length == 0) {
+                return cb;
+            }
+
+            // ---
+
+            cb.each(function(i,e) { 
+                $(".btn", e).attr("disabled", "disabled") 
+            });
+
+            return cb
+        } // end of disable
+
+        if (arg == "enable") {
+            var cb = $(this);
+
+            if (cb.length == 0) {
+                return cb;
+            }
+
+            // ---
+
+            cb.each(function(i,e) { 
+                $(".btn", e).removeAttr("disabled")
+            });
+
+            return cb
+        } // end of enable
+
         if (arg == "values") {
             var vs = [];
 

@@ -108,6 +108,17 @@ Returns values from all available options.
 var vs = $('.btn-group').btComboBox('values')
 ```
 
+### disable/enable
+
+`.btComboBox('disable')` / `.btComboBox('enable')`
+
+Disable/enable combobox.
+
+```javascript
+$('.btn-group').btComboBox('disable');
+$('.btn-group').btComboBox('enable');
+```
+
 ### Events
 
 `change`
