@@ -73,7 +73,7 @@ Appends options, using given `parameters` properties.
 
 * `pairs`: Array of option to be appended; Each array element 
 should be either `[val,label]`, or anything else if next `extractor` 
-property is provided.
+property is provided. If pair is `['_',null]` it will be a divider.
 * `extractor` (optional, required if elements of `pairs` array 
 aren't `[val,label]`): Function `(element of pairs) => [value, label]`.
 

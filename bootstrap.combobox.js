@@ -151,6 +151,13 @@
             var p, id = g.attr("id"), b = $(".btn", g), l = ps.length;
             for (var u = $("ul", g), i = 0; i < l; i++) {
                 p = ps[i];
+
+                if (p[0] == '_' && !p[1]) {
+                    $('<li class="divider"></li>').appendTo(u);
+                    continue;
+                }
+
+                // ---
                 
                 $('<a href="' +p[0]+ '" title="' +p[1]+ '">' +p[1]+ '</a>').
                     appendTo($('<li></li>').appendTo(u)).click(function() { 
