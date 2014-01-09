@@ -78,9 +78,10 @@
         var selectValue = function(id, g, b, a) {
             var v = (a) ? a.attr("href") : null, 
             l = (a) ? a.text() : "",
-            h = $("#"+id+"-hid"), o = h.val();
+            h = $("#"+id+"-hid"), o = h.val(),
+            p = a.parent();
 
-            if (v == o) return false; // No change
+            if (v == o && p.hasClass("active")) return false; // No change
 
             h.val(v);
             $(".label", b).text(l);
@@ -97,12 +98,12 @@
         var select = function(g, v) {
             var id = g.attr("id"), b = $(".btn", g),
             a = $("li a[href='"+v+"']", g);
-            
+
             if (a.length == 0) return false;
             
-            selectValue(id, g, b, a)
+            selectValue(id, g, b, a);
 
-            return true;
+            return true
         };
 
         if (arg && arg['action'] == "select") {
@@ -149,6 +150,7 @@
 
         var load = function(g, ps) {
             var p, id = g.attr("id"), b = $(".btn", g), l = ps.length;
+
             for (var u = $("ul", g), i = 0; i < l; i++) {
                 p = ps[i];
 
@@ -167,6 +169,8 @@
                     })
                 
             }
+
+            select(g, $("#"+id+"-hid").val())
         };
 
         if (arg && arg['action'] == "load") {
@@ -218,7 +222,7 @@
             
             if (s.hasClass("btn-group")) return; // Already enhanced
 
-            var id = s.attr("id"), v = s.val(),
+            var id = s.attr("id"), v = s.attr("value"),
             bc = s.attr("data-btn-class"), 
             xbc = (bc && bc != "") ? ' '+bc : "",
             b = $('<button type="button" class="btn'+xbc+' dropdown-toggle" data-toggle="dropdown"><span class="label"></span><span class="caret"></span></button>').attr("name", s.attr("name")).attr("id", id+"-tog"), lb= $(".label", b),
@@ -230,13 +234,14 @@
             });
 
             $('<input type="hidden" name="' +s.attr("name")+ 
-              '" id="' +id+ '-hid" value="" />').insertAfter(s);
+              '" id="' +id+ '-hid" value="' + ((v)?v:"") + '" />').
+                insertAfter(s);
 
             var sc = s.attr("class"), xc = (sc && sc != "") ? ' '+sc : "", 
             g = $('<div class="btn-group '+xc+'"></div>').
                 attr("id", id).append(b).append(l);
 
-            if (!select(g, v)) {
+            if (!select(g, v) && !v) {
                 var so = selectedOption(g);
                 selectValue(id, g, b, so[2])
             }
