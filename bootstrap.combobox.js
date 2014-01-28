@@ -79,11 +79,12 @@
             var v = (a) ? a.attr("href") : null, 
             l = (a) ? a.text() : "",
             h = $("#"+id+"-hid"), o = h.val(),
-            p = a.parent();
-
-            if (v == o && p.hasClass("active")) return false; // No change
+            p = (a) ? a.parent() : null;
 
             h.val(v);
+
+            if (v == o && p && p.hasClass("active")) return false; // No change
+
             $(".label", b).text(l);
 
             $(".active", g).removeClass("active");
@@ -243,7 +244,7 @@
 
             if (!select(g, v) && !v) {
                 var so = selectedOption(g);
-                selectValue(id, g, b, so[2])
+                if (so) selectValue(id, g, b, so[2]);
             }
 
             $("li > a", g).click(function() { 
