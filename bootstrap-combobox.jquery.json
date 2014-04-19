@@ -1,6 +1,6 @@
 {
     "name": "bootstrap-combobox",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "title": "Bootstrap Combobox",
     "description": "Provides combobox as a Twitter Bootstrap component, based on dropdown (which is compatible down to IE7).",
     "keywords": [ "bootstrap", "stylable", "combobox", "dropdown" ],
