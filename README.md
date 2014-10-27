@@ -2,7 +2,7 @@
 
 Provides combobox as a Twitter Bootstrap component, based on [dropdown](http://getbootstrap.com/components/#dropdowns) (which is compatible down to IE7).
 
-See [demo](http://rawgithub.com/applicius/bootstrap-combobox/master/demo.html).
+See [demo](http://applicius.github.io/bootstrap-combobox/).
 
 > Requires jQuery 1.10+ & Twitter Bootstrap 3+.
 
