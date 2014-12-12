@@ -2,29 +2,43 @@
 
 Provides combobox as a Twitter Bootstrap component, based on [dropdown](http://getbootstrap.com/components/#dropdowns) (which is compatible down to IE7).
 
-See [demo](http://applicius.github.io/bootstrap-combobox/).
+See [demo](http://rawgit.com/applicius/bootstrap-combobox/master/demo.html).
 
-> Requires jQuery 1.10+ & Twitter Bootstrap 3+.
+## Get started
 
-## JavaScript usage
+Files of this component can be download from the source repository: [js/](https://github.com/applicius/bootstrap-combobox/blob/master/js/)
+
+> It requires jQuery 1.10+ & Twitter Bootstrap 3+.
+
+It's also available as a [NPM package](https://www.npmjs.com/package/bootstrap-combobox): `npm install bootstrap-combobox`
+
+## Setup
 
 Combobox plugin can be applied on `select` elements, to turn them into comboboxes.
 
 ```html
+<!-- Dependencies -->
+<script src="//url/to/jquery-1.10.2.min.js"></script>
+<script src="//url/to/bootstrap.js"></script>
+<script src="//url/to/bootstrap-combobox.min.js"></script>
+
+<!-- UI dependencies -->
+<link href="//url/to/bootstrap.min.css" rel="stylesheet" />
+
+<!-- HTML to be rendered as a combobox -->
 <select id="uniqueId" name="fieldName"
   class="optional overall classes"
   data-btn-class="option toggle classes">
   <!-- ... -->
 </select>
+
+<!-- Install combobox UI on the select -->
+<script>$('select').btComboBox()</script>
 ```
 
-```javascript
-$('select').btComboBox()
-```
+## API reference
 
-### Methods
-
-#### selectedOption
+### selectedOption
 
 `.btComboBox('selectedOption')`
 
@@ -35,7 +49,7 @@ var o = $('.btn-group').btComboBox('selectedOption');
 var val = o[0], label = o[1], elem = o[2];
 ```
 
-#### value
+### value
 
 `.btComboBox('value')`
 
@@ -45,7 +59,7 @@ Returns value of selected option.
 var v = $('.btn-group').btComboBox('value')
 ```
 
-#### select
+### select
 
 `.btComboBox({'action':"select",'value':"V"})`
 
@@ -55,7 +69,7 @@ Selects option matching given value (if one).
 $('.btn-group).btComboBox({'action':"select",'value':"value_to_select"})
 ```
 
-#### clear
+### clear
 
 `.btComboBox('clear')`
 
@@ -65,7 +79,7 @@ Removes all options and unselect value.
 $('.btn-group').btComboBox('clear')
 ```
 
-#### load
+### load
 
 `.btComboBox({'action':"load", parameters})`
 
@@ -91,14 +105,14 @@ $('.btn-group').btComboBox({
 })
 ```
 
-#### reset
+### reset
 
 `.btComboBox({'action':"reset", parameters})`
 
 Reset options, using same `parameters` as load method.
 Keep value selection (if value is still available in new options).
 
-#### values
+### values
 
 `.btComboBox('values')`
 
@@ -119,7 +133,7 @@ $('.btn-group').btComboBox('disable');
 $('.btn-group').btComboBox('enable');
 ```
 
-### Events
+## Events
 
 `change`
 
