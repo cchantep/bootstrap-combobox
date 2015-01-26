@@ -1,6 +1,6 @@
 {
   "name": "bootstrap-combobox",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Provides combobox as a Twitter Bootstrap component, based on dropdown (which is compatible down to IE7).",
   "main": "js/bootstrap-combobox.min.js",
   "scripts": {
@@ -9,18 +9,18 @@
   "files": [ "js/bootstrap-combobox.min.js" ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/applicius/bootstrap-combobox.git"
+    "url": "https://github.com/cchantep/bootstrap-combobox.git"
   },
   "keywords": [ "bootstrap", "stylable", "combobox", "dropdown" ],
-  "author": { "name": "Applicius", "url": "http://www.applicius.fr" },
+  "author": { "name": "cchantep", "url": "https://github.com/cchantep/bootstrap-combobox" },
   "contributors": [
     { "name": "cchantep", "url": "https://github.com/cchantep" }
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/applicius/bootstrap-combobox/issues"
+    "url": "https://github.com/cchantep/bootstrap-combobox/issues"
   },
-  "homepage": "https://github.com/applicius/bootstrap-combobox",
+  "homepage": "https://github.com/cchantep/bootstrap-combobox",
   "dependencies": {
       "jquery": ">=1.10", 
       "bootstrap": ">=3"
